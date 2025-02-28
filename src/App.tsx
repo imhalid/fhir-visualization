@@ -20,6 +20,7 @@ interface GraphData {
 
 function App() {
   const [data, setData] = useState<GraphData | null>(null);
+  const [selectedNodeData, setSelectedNodeData] = useState<Node | null>(null);
   const fgRef = useRef();
 
   useEffect(() => {
@@ -36,16 +37,35 @@ function App() {
 
   return (
     <div className="App">
-        <ForceGraph3D
+ <ForceGraph3D
           ref={fgRef}
           graphData={data}
           nodeLabel={(node: Node) => `${node.type}\n\n${node.description}`}
-          nodeAutoColorBy="type"
+          nodeAutoColorBy="id"
           linkDirectionalArrowLength={3.5}
           linkDirectionalArrowRelPos={1}
-          linkCurvature={0.25}
-          nodeRelSize={6}
-        />
+        onNodeDragEnd={node => {
+            node.fx = node.x;
+            node.fy = node.y;
+            node.fz = node.z;
+          }}
+        nodeRelSize={5}
+        nodeOpacity={1}
+        
+        onNodeClick={(node) => {
+            console.log(node);
+            setSelectedNodeData(node);
+          }}
+        /> 
+      
+      
+        {selectedNodeData && (
+          <div className="absolute bottom-0 left-0 p-4 bg-white bg-opacity-50 text-left">
+            <h1>{selectedNodeData.id}</h1>
+            <h2>{selectedNodeData.type}</h2>
+            <p>{selectedNodeData.description}</p>
+          </div>
+        )}
     </div>
   );
 }
