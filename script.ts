@@ -126,6 +126,6 @@ jsonOutput.links = jsonOutput.links.map(link => {
 });
 
 // Write the output to a JSON file
-const outputPath = path.join(__dirname, 'output.json');
+const outputPath = path.join(__dirname, 'public/output.json');
 fs.writeFileSync(outputPath, JSON.stringify(jsonOutput, null, 2), 'utf-8');
 console.log(`JSON file generated successfully at: ${outputPath}`);

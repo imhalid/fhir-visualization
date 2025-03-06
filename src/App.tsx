@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     // Load the JSON data
-    fetch('./output.json')
+    fetch('./public/output.json')
       .then(res => res.json())
       .then(jsonData => {
         setData(jsonData);
