@@ -5,6 +5,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  position: relative;
 }
 
 h1 {
@@ -23,4 +25,48 @@ h1 {
   align-items: center;
   font-size: 1.5rem;
   color: #666;
+}
+
+.filter-container {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.filter-container input,
+.filter-container select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-container input:focus,
+.filter-container select:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-opacity-50 {
+  background-opacity: 0.5;
+}
+
+.text-left {
+  text-align: left;
 }
